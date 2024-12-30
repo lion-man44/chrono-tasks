@@ -1,0 +1,18 @@
+[project]
+name = "chrono-tasks"
+version = "0.1.0"
+description = "Calculate your tasks done"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.1.4",
+    "django-ninja>=1.3.0",
+    "psycopg2-binary>=2.9.10",
+    "python-dotenv>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-django>=4.9.0",
+]
