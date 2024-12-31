@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import EmailValidator, MaxLengthValidator, MinLengthValidator
-import random
 
 from shared.models import TimestampMixin, UUIDMixin
 
