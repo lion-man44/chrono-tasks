@@ -4,22 +4,22 @@ from shared.models import TimestampMixin, UUIDMixin
 class BaseTaskMixin(models.Model):
     display_id = models.BigIntegerField(default=1)
     name = models.CharField(max_length=80)
-    content = models.TextField(blank=True)
-    started_at = models.DateTimeField(blank=True)
-    opened_merge_request_at = models.DateTimeField(blank=True)
-    ended_at = models.DateTimeField(blank=True)
+    content = models.TextField(blank=True, default='')
+    started_at = models.DateTimeField(blank=True, null=True)
+    opened_merge_request_at = models.DateTimeField(blank=True, null=True)
+    ended_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         abstract = True
 
 class BaseAssigneeMixin(models.Model):
-    assigned_user = models.ForeignKey('users.User', on_delete=models.CASCADE, db_index=True)
+    assigned_user = models.ForeignKey('users.User', on_delete=models.DO_NOTHING, db_index=True)
 
     class Meta:
         abstract = True
 
 class BaseCreatorMixin(models.Model):
-    created_by_user = models.ForeignKey('users.User', on_delete=models.CASCADE, db_index=True)
+    created_by_user = models.ForeignKey('users.User', on_delete=models.DO_NOTHING, db_index=True)
 
     class Meta:
         abstract = True

@@ -22,11 +22,11 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('display_id', models.BigIntegerField(default=1)),
                 ('name', models.CharField(max_length=80)),
-                ('content', models.TextField(blank=True, null=True)),
+                ('content', models.TextField(blank=True, default='')),
                 ('started_at', models.DateTimeField(blank=True, null=True)),
                 ('opened_merge_request_at', models.DateTimeField(blank=True, null=True)),
                 ('ended_at', models.DateTimeField(blank=True, null=True)),
-                ('created_by_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('created_by_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
             ],
             options={
                 'db_table': 'epics',
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             name='EpicAssignee',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
                 ('epic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.epic')),
             ],
             options={
@@ -51,11 +51,11 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('display_id', models.BigIntegerField(default=1)),
                 ('name', models.CharField(max_length=80)),
-                ('content', models.TextField(blank=True, null=True)),
+                ('content', models.TextField(blank=True, default='')),
                 ('started_at', models.DateTimeField(blank=True, null=True)),
                 ('opened_merge_request_at', models.DateTimeField(blank=True, null=True)),
                 ('ended_at', models.DateTimeField(blank=True, null=True)),
-                ('created_by_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('created_by_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
                 ('epic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.epic')),
             ],
             options={
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
             name='UserStoryAssignee',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
                 ('user_story', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.userstory')),
             ],
             options={
@@ -81,11 +81,11 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('display_id', models.BigIntegerField(default=1)),
                 ('name', models.CharField(max_length=80)),
-                ('content', models.TextField(blank=True, null=True)),
+                ('content', models.TextField(blank=True, default='')),
                 ('started_at', models.DateTimeField(blank=True, null=True)),
                 ('opened_merge_request_at', models.DateTimeField(blank=True, null=True)),
                 ('ended_at', models.DateTimeField(blank=True, null=True)),
-                ('created_by_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('created_by_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
                 ('user_story', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.userstory')),
             ],
             options={
@@ -96,7 +96,7 @@ class Migration(migrations.Migration):
             name='TaskAssignee',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.user')),
+                ('assigned_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
                 ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.task')),
             ],
             options={
