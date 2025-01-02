@@ -24,7 +24,6 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=80)),
                 ('content', models.TextField(blank=True, default='')),
                 ('started_at', models.DateTimeField(blank=True, null=True)),
-                ('opened_merge_request_at', models.DateTimeField(blank=True, null=True)),
                 ('ended_at', models.DateTimeField(blank=True, null=True)),
                 ('created_by_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='users.user')),
             ],

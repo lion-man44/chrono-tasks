@@ -6,8 +6,13 @@ class BaseTaskMixin(models.Model):
     name = models.CharField(max_length=80)
     content = models.TextField(blank=True, default='')
     started_at = models.DateTimeField(blank=True, null=True)
-    opened_merge_request_at = models.DateTimeField(blank=True, null=True)
     ended_at = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        abstract = True
+
+class BaseOpenedMergeRequestMixin(models.Model):
+    opened_merge_request_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -39,7 +44,7 @@ class Epic(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
     class Meta:
         db_table = 'epics'
 
-class UserStory(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
+class UserStory(UUIDMixin, BaseTaskMixin, BaseOpenedMergeRequestMixin, BaseCreatorMixin, TimestampMixin):
     """ユーザーストーリーモデル
 
     ユーザーストーリーのデータを作成する際に使用するモデル
@@ -47,6 +52,7 @@ class UserStory(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
     Args:
         UUIDMixin (models.Model): UUIDを主キーに設定する
         BaseTaskMixin (models.Model): タスクの基本情報を設定する
+        BaseOpenedMergeRequestMixin (models.Model): マージリクエストの開始日時を設定する
         BaseCreatorMixin (models.Model): タスクの作成者を設定する
         TimestampMixin (models.Model): 作成日時と更新日時を設定する
     """
@@ -56,7 +62,7 @@ class UserStory(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
     class Meta:
         db_table = 'user_stories'
 
-class Task(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
+class Task(UUIDMixin, BaseTaskMixin, BaseOpenedMergeRequestMixin, BaseCreatorMixin, TimestampMixin):
     """タスクモデル
 
     タスクのデータを作成する際に使用するモデル
@@ -64,6 +70,7 @@ class Task(UUIDMixin, BaseTaskMixin, BaseCreatorMixin, TimestampMixin):
     Args:
         UUIDMixin (models.Model): UUIDを主キーに設定する
         BaseTaskMixin (models.Model): タスクの基本情報を設定する
+        BaseOpenedMergeRequestMixin (models.Model): マージリクエストの開始日時を設定する
         BaseCreatorMixin (models.Model): タスクの作成者を設定する
         TimestampMixin (models.Model): 作成日時と更新日時を設定する
     """
