@@ -4,11 +4,6 @@ import random
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'icon_color', 'created_at', 'updated_at')
+    list_display = ('id', 'name', 'email', 'created_at', 'updated_at')
     search_fields = ('id', 'name', 'email', 'created_at')
     ordering = ('-created_at',)
-
-    def get_changeform_initial_data(self, _):
-        return {
-            'icon_color': random.randbytes(3).hex()
-        }
