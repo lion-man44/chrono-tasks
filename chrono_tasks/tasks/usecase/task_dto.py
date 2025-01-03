@@ -3,6 +3,14 @@ from datetime import datetime
 
 from tasks.domain.type import CreatedByUserId, UserStoryId
 
+class TaskListInputDTO(BaseModel):
+    """Task一覧取得に関する入力情報
+
+    主にusecase層で利用されるが、presentation層でも利用される
+    """
+    offset: int
+    limit: int
+
 class TaskInputDTO(BaseModel):
     """Taskに関する入力情報
 

@@ -1,26 +1,24 @@
 from abc import ABC, abstractmethod
+from tasks.usecase.epic_dto import EpicListInputDTO, EpicInputDTO
+from tasks.domain.type import EpicId
 
 class EpicIRepository(ABC):
     @abstractmethod
-    def save(self, epic):
+    def save(self, epic_input_dto: EpicInputDTO):
         pass
 
     @abstractmethod
-    def find_by_id(self, id):
+    def find_by_id(self, id: EpicId):
         pass
 
     @abstractmethod
-    def find_user_stories(self, id):
+    def find_user_stories_by_id(self, id: EpicId):
         pass
 
     @abstractmethod
-    def list(self):
+    def list(self, epic_list_input_dto: EpicListInputDTO):
         pass
 
     @abstractmethod
-    def delete(self, epic):
-        pass
-
-    @abstractmethod
-    def update(self, epic):
+    def delete(self, epic_input_dto: EpicInputDTO):
         pass

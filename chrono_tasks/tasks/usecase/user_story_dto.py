@@ -3,6 +3,14 @@ from datetime import datetime
 
 from tasks.domain.type import CreatedByUserId, EpicId
 
+class UserStoryListInputDTO(BaseModel):
+    """UserStory一覧取得に関する入力情報
+
+    主にusecase層で利用されるが、presentation層でも利用される
+    """
+    offset: int
+    limit: int
+
 class UserStoryInputDTO(BaseModel):
     """UserStoryに関する入力情報
 
