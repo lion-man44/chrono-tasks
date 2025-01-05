@@ -17,6 +17,8 @@ class EpicEntity(BaseEntity):
     opened_merge_request_at: Union[datetime, None] = None
     ended_at: Union[datetime, None] = None
     created_by_user_id: Union[CreatedByUserId, None] = None
+    created_at: Union[datetime, None] = None
+    updated_at: Union[datetime, None] = None
 
     def status(self) -> str:
         if self.started_at is None:
