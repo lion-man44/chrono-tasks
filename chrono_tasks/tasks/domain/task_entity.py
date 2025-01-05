@@ -1,22 +1,23 @@
 from datetime import datetime
 
+from typing import Union
 from pydantic import Field
 
 from shared.domain.entity import BaseEntity
 from shared.domain.value_object import EnumStatus
-from type import UserStoryId, TaskId, CreatedByUserId
+from tasks.domain.type import UserStoryId, TaskId, CreatedByUserId
 
 class TaskEntity(BaseEntity):
     id: TaskId
     display_id: int = Field(ge=1)
-    name: str
-    content: str
-    started_at: datetime
-    opened_merge_request_at: datetime
-    ended_at: datetime
-    created_at: datetime
-    updated_at: datetime
-    created_by_user_id: CreatedByUserId
+    name: str = ''
+    content: Union[str, None] = None
+    started_at: Union[datetime, None] = None
+    opened_merge_request_at: Union[datetime, None] = None
+    ended_at: Union[datetime, None] = None
+    created_by_user_id: Union[CreatedByUserId, None] = None
+    created_at: Union[datetime, None] = None
+    updated_at: Union[datetime, None] = None
     user_story_id: UserStoryId
 
     def status(self) -> str:
