@@ -1,9 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from enum import Enum
 
 class BaseValueObject(BaseModel):
-    class Config:
-        frozen = True
+    model_config = ConfigDict(strict=True, frozen=True)
 
 class EnumStatus(Enum):
     TODO = 'To-do'

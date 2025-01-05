@@ -1,5 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class BaseEntity(BaseModel):
-    class Config:
-        validate_assignment = True
+    model_config = ConfigDict(strict=True, validate_assignment=True)
