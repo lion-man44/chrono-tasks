@@ -19,6 +19,19 @@ class UserStoryEntity(BaseEntity):
     created_by_user_id: CreatedByUserId
     epic_id: EpicId
 
+    @classmethod
+    def from_dto(cls, dto: UserStoryInputDTO):
+        return cls(
+            display_id=dto.display_id,
+            name=dto.name,
+            content=dto.content,
+            started_at=dto.started_at,
+            opened_merge_request_at=dto.opened_merge_request_at,
+            ended_at=dto.ended_at,
+            created_by_user_id=dto.created_by_user_id,
+            epic_id=dto.epic_id
+        )
+
     def status(self) -> str:
         if self.started_at is None:
             return EnumStatus.TODO.value
